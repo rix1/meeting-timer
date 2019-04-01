@@ -14,7 +14,7 @@ const InlineInput = ({
       border: none;
       border-bottom: ${theme.sizes.lineWidth} dotted ${error ? 'red' : 'gray'};
       outline: none;
-      width: 3em;
+      width: 3.5em;
       text-align: right;
       &:focus {
         border-bottom: ${theme.sizes.lineWidth} solid ${theme.colors.orange};

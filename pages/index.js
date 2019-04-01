@@ -1,44 +1,59 @@
 // @flow
-import React from 'react';
+import React, { useState } from 'react';
 import { ThemeProvider } from 'emotion-theming';
-
 import Content from '../components/Content';
 import Page from '../components/Page';
+import Timer from '../components/Timer';
+import ColorButton from '../components/ColorButton';
+import InlineInput from '../components/InlineInput';
+
+import { timeToString } from '../lib/formatTime';
 import theme from './theme';
 
-const Index = () => (
-  <ThemeProvider theme={theme}>
-    <Page title="Rix1s NextJS starter ">
-      <Content className="mw6 center">
-        <p className="lh-copy">
-          This is Rix1s NextJS starter. I have sort of done{' '}
-          <dfn>mise en place</dfn> so that I can just start cooking PoCs without
-          setting up anything.
-          <span className="bg-black-05 pv2 ph3 lh-copy db mt3 br3 f5">
-            <span className="fw5 f4 db lh-title">mise en place</span>
-            <span className="silver db f6">
-              /ˌmiːz ɒ̃ ˈplas,French miz ɑ̃ plas/
-            </span>
-            <i>noun</i> (in a professional kitchen) the preparation of dishes
-            and ingredients before the beginning of service.
-          </span>
-        </p>
+const Index = () => {
+  const [ppl, setPeople] = useState(0);
+  const [plannedTime, setTime] = useState(0);
 
-        <hr className="o-30 mv4" />
-
-        <p>The kitchen has the following prepared for you:</p>
-        <ul className="lh-copy">
-          <li>NextJS</li>
-          <li>Tachyons (from CDN) and Emotion for styling</li>
-          <li>Flow</li>
-          <li>Jest</li>
-          <li>ESLint</li>
-          <li>Prettier</li>
-          <li>Common components</li>
-        </ul>
-      </Content>
-    </Page>
-  </ThemeProvider>
-);
+  return (
+    <ThemeProvider theme={theme}>
+      <Page title="Rix1s NextJS starter ">
+        <Content className="mw6 center">
+          <h1 className="lh-copy">How many are attending?</h1>
+          We are{' '}
+          <InlineInput
+            value={ppl}
+            type="number"
+            onChange={ev => setPeople(ev.target.value)}
+          />{' '}
+          people meeting for{' '}
+          <InlineInput
+            className="w5"
+            value={plannedTime}
+            type="number"
+            onChange={ev => setTime(ev.target.value)}
+          />{' '}
+          minutes
+          <br />
+          <Timer>
+            {(runningTime, isRunning, toggle) => (
+              <div>
+                <ColorButton className="mt4" onClick={toggle}>
+                  {isRunning ? 'Pause' : 'Start'}
+                </ColorButton>
+                <p className="f2">
+                  Total time spent{' '}
+                  {timeToString((runningTime + plannedTime * 60) * ppl)}
+                </p>
+                <p className="f6">
+                  Actual spent {timeToString(runningTime + plannedTime * 60)}
+                </p>
+              </div>
+            )}
+          </Timer>
+        </Content>
+      </Page>
+    </ThemeProvider>
+  );
+};
 
 export default Index;
