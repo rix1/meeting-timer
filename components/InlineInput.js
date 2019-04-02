@@ -19,6 +19,11 @@ const InlineInput = ({
       &:focus {
         border-bottom: ${theme.sizes.lineWidth} solid ${theme.colors.orange};
       }
+      &::-webkit-inner-spin-button,
+      &::-webkit-outer-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+      }
     `}
     className={`ph2 ${className}`}
     {...rest}

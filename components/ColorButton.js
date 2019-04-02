@@ -1,22 +1,29 @@
 // @flow
 import React from 'react';
-import { css } from '@emotion/core';
+import styled from '@emotion/styled';
+import { fontSize, color, space, width } from 'styled-system';
 
 type Props = {
   children: React$Node,
   className?: string,
 };
 
+const Btn = styled.button`
+  ${color}
+  ${space}
+  ${fontSize}
+  ${width}
+`;
+
 const ColorButton = ({ children, className = '', ...rest }: Props = {}) => (
-  <button
+  <Btn
     type="button"
-    css={theme => css`
-      background-color: ${theme.colors.orange};
-    `}
-    className={`f4 fw4 white-90 pointer pv1 bn br2 w-100 pv2 ${className}`}
+    width="100%"
+    bg="orange"
+    className={`f4 fw4 white-90 pointer bn br2 ${className}`}
     {...rest}>
     {children}
-  </button>
+  </Btn>
 );
 
 export default ColorButton;
