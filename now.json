@@ -1,10 +1,18 @@
 {
   "version": 2,
-  "name": "rix1-next-starter",
+  "name": "rix1-meeting-timer",
   "builds": [
     {
-      "src": "package.json",
+      "src": "next.config.js",
       "use": "@now/next"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/_next/static/(?:[^/]+/pages|chunks|runtime)/.+",
+      "headers": {
+        "cache-control": "immutable"
+      }
     }
   ]
 }
