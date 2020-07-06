@@ -25,21 +25,21 @@ const Index = () => {
           <InlineInput
             value={ppl}
             type="number"
-            onChange={ev => setPeople(ev.target.value)}
+            onChange={(ev) => setPeople(ev.target.value)}
           />{' '}
           people meeting for{' '}
           <InlineInput
             className="w5"
             value={plannedTime}
             type="number"
-            onChange={ev => setTime(ev.target.value)}
+            onChange={(ev) => setTime(ev.target.value)}
           />{' '}
           minutes, with an avg hourly rate of
           <InlineInput
             className="w5"
             value={hourRate}
             type="number"
-            onChange={ev => setHourRate(ev.target.value)}
+            onChange={(ev) => setHourRate(ev.target.value)}
           />{' '}
           money
           <br />
@@ -52,7 +52,6 @@ const Index = () => {
                     {timeToString((runningTime + plannedTime * 60) * ppl)}
                   </p>
                   <ColorButton
-                    className={isRunning ? 'i' : ''}
                     fontSize={5}
                     bg="transparent"
                     color="blue"
@@ -63,7 +62,7 @@ const Index = () => {
                 </div>
                 <div className="flex justify-between">
                   <p className="f6 dib">
-                    Hours spent {timeToString(runningTime + plannedTime * 60)}
+                    Timer: {timeToString(runningTime + plannedTime * 60)}
                   </p>
                   <p className="f6 dib">
                     Money spent:{' '}
