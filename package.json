@@ -23,7 +23,7 @@
     "babel-plugin-emotion": "^10.0.9",
     "dayjs": "^1.8.11",
     "emotion-theming": "^10.0.10",
-    "next": "^8.0.3",
+    "next": "^9.3.2",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "styled-system": "^4.1.0",
